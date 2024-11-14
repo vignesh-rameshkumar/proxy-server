@@ -40,9 +40,9 @@ Execute the script to begin setting up your proxy server:
 ./setup-proxy.sh
 ```
 
-## Contributing
+## Proxy - keyword
 
-Feel free to submit issues or pull requests if you find any bugs or have suggestions for improvement.
+By following the method mentioned above, you can access the Test Server at `localhost` by typing `proxy` in your terminal.
 
 ## License
 
