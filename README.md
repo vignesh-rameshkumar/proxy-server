@@ -8,7 +8,7 @@ Follow the steps below to clone the repository, make the script executable, and 
 
 ### Prerequisites
 
-Ensure you have `git` installed on your machine.
+Ensure you have `git` and `node` installed on your machine.
 
 ### Clone this Repository
 
