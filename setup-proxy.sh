@@ -23,8 +23,8 @@ const server = http.createServer((req, res) => {
 });
 
 // Start the local proxy server on port 80
-server.listen(80, () => {
-  console.log('Local proxy server started on port 80');
+server.listen(3000, () => {
+  console.log('Local proxy server started on port 3000');
 });
 EOF
 
@@ -45,4 +45,4 @@ chmod +x "$PROXY_DIR/start-proxy.sh"
 sudo ln -s "$PROXY_DIR/start-proxy.sh" /usr/local/bin/proxy
 
 echo "Proxy server setup complete!"
-echo "You can now run the proxy server by typing 'proxy' in the terminal from anywhere in the system."
+echo "You can now run the proxy server @ localhost:3000 by typing 'proxy' in the terminal from anywhere in the system."
