@@ -11,20 +11,38 @@ cat > "$PROXY_DIR/proxy.js" <<EOF
 const http = require('http');
 const httpProxy = require('http-proxy');
 
-// Create a proxy server
-const proxy = httpProxy.createProxyServer({});
+// Create a proxy server with error handling
+const proxy = httpProxy.createProxyServer({
+  changeOrigin: true,
+  xfwd: true
+});
+
+// Add error handling to proxy
+proxy.on('error', (err, req, res) => {
+  console.error('Proxy error:', err);
+  res.writeHead(500, {
+    'Content-Type': 'text/plain'
+  });
+  res.end('Proxy error: ' + err.message);
+});
 
 // Create a local server that will forward requests to the test server
 const server = http.createServer((req, res) => {
+  console.log(\`Incoming request: \${req.method} \${req.url}\`);
   // Forward the request to the test server
   proxy.web(req, res, {
     target: 'http://14.99.126.171'
   });
 });
 
+// Add error handling to server
+server.on('error', (err) => {
+  console.error('Server error:', err);
+});
+
 // Start the local proxy server on port 3000
-server.listen(3000, () => {
-  console.log('Local proxy server started on port 3000');
+server.listen(3000, '127.0.0.1', () => {
+  console.log('Local proxy server started on http://127.0.0.1:3000');
 });
 EOF
 
