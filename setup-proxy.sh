@@ -18,11 +18,11 @@ const proxy = httpProxy.createProxyServer({});
 const server = http.createServer((req, res) => {
   // Forward the request to the test server
   proxy.web(req, res, {
-    target: 'http://14.99.126.171:8000'
+    target: 'http://14.99.126.171'
   });
 });
 
-// Start the local proxy server on port 80
+// Start the local proxy server on port 3000
 server.listen(3000, () => {
   console.log('Local proxy server started on port 3000');
 });
